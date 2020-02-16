@@ -1,0 +1,71 @@
+.rongrong{
+	max-width:100%;
+	margin:0 auto;
+	display: grid;
+	grid-template-columns: repeat(3,1fr);
+	grid-template-rows: 200px 50px;
+
+	grid-gap:20px;
+
+	grid-template-areas:
+	 "headMain headMain headMain "
+	 "dessmain desMain desMain"
+
+
+}
+.head{
+	grid-area: headMain;
+	display: block;
+	font-size:3vw;
+
+
+
+}
+.des-left{
+	grid-area:dessmain;
+	font-size:2.3vw;
+	margin-left: 4vw;
+
+	display: block;
+
+}
+.des-right{
+	grid-area:desMain;
+	font-size:2vw;
+	display: block;
+	margin-left: 4vw;
+}
+
+@media screen and (max-width: 690px){
+
+	.rongrong{
+		grid-template-areas: 
+		"headMain headMain headMain"
+		"dessmain dessmain dessmain"
+		"desMain desMain desMain";
+
+
+	}
+
+     .head{
+     	font-size:9vw;
+     }
+
+     .des-left{
+     	
+
+     	max-width: 100%;
+     	font-size:3vw;
+     	
+
+     }
+
+     .des-right{
+
+     	width: 100%;
+     	font-size:3vw;
+
+     	
+     }
+
+}
