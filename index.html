@@ -1,42 +1,214 @@
-
 <!DOCTYPE html>
 <html>
-<head>
-	<title></title>
-	<link rel="stylesheet" href="style.css">
-	<link href="https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+	<head>
+		<meta charset="utf-8">
+		<title>My first three.js app</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body { margin: 0; }
+			canvas { display: block; }
+		</style>
+	</head>
+	<body>
 
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
-<body style="background: black;">
-
-<div class="rongrong">	
-	<div class="head"> 
-		<p style= "font-family: 'Sorts Mill Goudy', serif;margin-left:4vw;color:white;line-height: 90%;">Rong Rong</p>
-		<p style="width: 100%;margin-left:4vw;color:white;line-height: 10%;">荣荣</p>	
-		<br><br><br>
-
-	</div>
-	
-
-		<div class="des-left" style="font-family: 'Sorts Mill Goudy', serif;font-style:bold;/*width: 30%;*//*margin-left:4vw;*/color:white;">As one of the founders of this group, RongRong is known for documenting the life-style of the East Village community.</div>
-
-		<div class="des-right" style="font-family: 'Montserrat';font-style:medium;/*width: 47%;*//*margin-left:40vw;margin-top:0.5vw;*/color:white;">The ephemeral creations of these artists are known through his images. Later, he met his artistic partner and wife Inri, together they created series of photographs that explore the beauty of the human being, the urban environment as well as the development of their family. In 2007, RongRong launched the 三影堂摄影艺术中心 Three Shadows Photography Art Centre located in the 草场地 Caochangdi Art District in Beijing. It is China’s first independent photography centre which influence and facilitate the development of China’s contemporary photography. In 2016, they received the Outstanding Contribution to Photography by the World Photography Organization (WPO) for their lifetime commitment to photography. </div>
+    <script type="module">
 
 
+        import * as THREE from '../build/three.module.js';
 
-
-</div>
+            import { DDSLoader } from './jsm/loaders/DDSLoader.js';
+            import { MTLLoader } from './jsm/loaders/MTLLoader.js';
+            import { OBJLoader } from './jsm/loaders/OBJLoader.js';
 
 
 
 
 
+			var scene = new THREE.Scene();
+			var camera = new THREE.PerspectiveCamera( 30, window.innerWidth/window.innerHeight, 0.1, 1000 );
+
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+			var Materialloader = new THREE.MaterialLoader (); 
+
+			Materialloader. load
+
+			( ' model/fly.mtl', function(materials){
+
+			materials.preload();
+			var Objectloader.setMaterials(materials);
+
+
+			ObjectLoader. load('model/fly.obj',function(mesh){
+
+				scene.add(mesh);
+
+
+			});
+
+			});
 
 
 
 
-</body>
+
+            // var container;
+
+            // var camera, scene, renderer;
+
+            // var mouseX = 0; mouseY = 0;
+
+            // var windowHalfX = window.innerWidth / 2;
+            // var windowHalfY = window.innerHeight / 2;
+
+            // init();
+            // animate();
+
+
+            //     function init() {
+
+            //     container = document.createElement( 'div' );
+            //     document.body.appendChild( container );
+
+            //     camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
+            //     camera.position.z = 250;
+
+            //     // scene
+
+            //     scene = new THREE.Scene();
+
+            //     var ambientLight = new THREE.AmbientLight( 0xcccccc, 0.4 );
+            //     scene.add( ambientLight );
+
+            //     var pointLight = new THREE.PointLight( 0xffffff, 0.8 );
+            //     camera.add( pointLight );
+            //     scene.add( camera );
+
+            //     // model
+
+            //     var onProgress = function ( xhr ) {
+
+            //         if ( xhr.lengthComputable ) {
+
+            //             var percentComplete = xhr.loaded / xhr.total * 100;
+            //             console.log( Math.round( percentComplete, 2 ) + '% downloaded' );
+
+            //         }
+
+            //     };
+
+            //     var onError = function () { };
+
+            //     var manager = new THREE.LoadingManager();
+            //     manager.addHandler( /\.dds$/i, new DDSLoader() );
+
+            //     // comment in the following line and import TGALoader if your asset uses TGA textures
+            //     // manager.addHandler( /\.tga$/i, new TGALoader() );
+
+            //     new MTLLoader( manager )
+            //         .setPath( 'model/' )
+            //         .load( 'fly.mtl', function ( materials ) {
+
+            //             materials.preload();
+
+            //             new OBJLoader( manager )
+            //                 .setMaterials( materials )
+            //                 .setPath( 'model/' )
+            //                 .load( 'fly.obj', function ( object ) {
+
+            //                     object.position.y = - 95;
+            //                     scene.add( object );
+
+            //                 }, onProgress, onError );
+
+            //         } );
+
+            //     //
+
+            //     renderer = new THREE.WebGLRenderer();
+            //     renderer.setPixelRatio( window.devicePixelRatio );
+            //     renderer.setSize( window.innerWidth, window.innerHeight );
+            //     container.appendChild( renderer.domElement );
+
+            //     document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+
+            //     //
+
+            //     window.addEventListener( 'resize', onWindowResize, false );
+
+            // }
+
+            // function onWindowResize() {
+
+            //     windowHalfX = window.innerWidth / 2;
+            //     windowHalfY = window.innerHeight / 2;
+
+            //     camera.aspect = window.innerWidth / window.innerHeight;
+            //     camera.updateProjectionMatrix();
+
+            //     renderer.setSize( window.innerWidth, window.innerHeight );
+
+            // }
+
+            // function onDocumentMouseMove( event ) {
+
+            //     mouseX = ( event.clientX - windowHalfX ) / 2;
+            //     mouseY = ( event.clientY - windowHalfY ) / 2;
+
+            // }
+
+            // //
+
+            // function animate() {
+
+            //     requestAnimationFrame( animate );
+            //     render();
+
+            // }
+
+            // function render() {
+
+            //     camera.position.x += ( mouseX - camera.position.x ) * .05;
+            //     camera.position.y += ( - mouseY - camera.position.y ) * .05;
+
+            //     camera.lookAt( scene.position );
+
+            //     renderer.render( scene, camera );
+
+            // }
+
+
+
+
+
+
+
+
+
+
+			// var loader = new THREE.ObjectLoader( );
+
+
+			// loader.load
+
+			// ( 'model/fly.obj',
+			// 	function( object )
+
+			// 	{
+			// 		scene.add(object);
+			// 	}
+
+			// );
+
+			// camera.position.z= 3;
+
+
+			// var ambientlight= new THREE.AmbientLight (0xFFFFFF, 0.8);
+
+
+		</script>
+	</body>
 </html>
